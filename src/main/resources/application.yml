@@ -5,7 +5,7 @@ spring:
         password: ShuXue_7
         url: jdbc:mysql://localhost:3306/juntai?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
 server:
-    port: 8081
+    port: 8090
 mybatis:
     mapper-locations: classpath:mapper/*Mapper.xml
     type-aliases-package: com.example.weapp.bean

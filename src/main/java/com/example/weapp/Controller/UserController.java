@@ -4,6 +4,7 @@ import com.example.weapp.bean.User;
 import com.example.weapp.http.HttpResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  */
 
 @RequestMapping("user")
+@RestController
 public class UserController {
     @GetMapping("/getUserList")
     public HttpResult getUserList(){
