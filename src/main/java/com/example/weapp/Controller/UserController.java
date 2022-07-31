@@ -2,28 +2,58 @@ package com.example.weapp.Controller;
 
 import com.example.weapp.bean.User;
 import com.example.weapp.http.HttpResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.weapp.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
- * @Author: Cqmax
+ * @Author: xm
  * @Date: 2022/7/28 13:59
  * @Version 1.0
  */
 
-@RequestMapping("user")
 @RestController
+@RequestMapping("user")
 public class UserController {
+    @Autowired
+    private UserService userService;
+    //获取所有的用户的信息，并且返回到httpResult里
     @GetMapping("/getUserList")
     public HttpResult getUserList(){
+        System.out.println("用户模块qqqqq");
         List<User> userList = null;
-
-        // 在此处插入代码，实现获得列表并赋值给相应的List;
-
+        userList= userService.findAllUsers();
+        System.out.println(userList);
         return HttpResult.ok(userList);
     }
+    //通过查询获取用户，查询依据：等待修改
+    @GetMapping("/getUserListBySearch")
+    public HttpResult getUserListBySearch(@RequestParam String username)
+    {
+        String userName=username;
+        System.out.println("userName");
+        List<User> userList=null;
+        userList=userService.findUserBySearch(userName);
+        System.out.println(userList);
+        return HttpResult.ok(userList);
+    }
+    @PostMapping("/changeUser")
+    public HttpResult changeUser(@RequestBody User user)
+    {
+        //修改函数,首先找到,然后修改.
+        System.out.println(user);
+        boolean changeResult=userService.changeUser(user);
+        return HttpResult.ok(changeResult);
+    }
+    @PostMapping("/deleteUser")
+    public HttpResult deleteUser(@RequestBody User user)
+    {
+        System.out.println(user);
+        boolean deleteResult=userService.deleteUser(user);
+        return HttpResult.ok(deleteResult);
+    }
+
 }
 

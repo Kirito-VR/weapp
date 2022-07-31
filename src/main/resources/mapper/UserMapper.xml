@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.weapp.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.example.weapp.bean.User">
+        <id column="user_id" jdbcType="BIGINT" property="userID"/>
+        <result column="user_nick" jdbcType="VARCHAR" property="userNick"></result>
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword"></result>
+        <result column="user_phone" jdbcType="VARCHAR" property="userPhoneNumber"></result>
+        <result column="user_address" jdbcType="VARCHAR" property="userAddress"></result>
+    </resultMap>
+<!--    修改用户信息-->
+    <update id="changeUser" parameterType="com.example.weapp.bean.User">
+        update user set user_nick=#{userNick},user_password=#{userPassword},user_phone=#{userPhoneNumber},user_address=#{userAddress}
+        where user_id=#{userID}
+    </update>
+<!--    删除用户-->
+    <delete id="deleteUser" parameterType="com.example.weapp.bean.User">
+        delete  from user
+        where user_id=#{userID}
+    </delete>
+<!--    查询所有用户-->
+    <select id="findAllUsers" resultMap="BaseResultMap">
+      select *
+      from user
+    </select>
+<!--搜索查询用户-->
+    <select id="findUserBySearch" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from user
+            where user_nick like concat('%',#{userName},'%')
+    </select>
+</mapper>
