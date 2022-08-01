@@ -18,7 +18,6 @@ public class UserController {
     @GetMapping("/getUserList")
     public HttpResult getUserList(){
         List<User> userList = null;
-
         // 在此处插入代码，实现获得列表并赋值给相应的List;
 
         return HttpResult.ok(userList);
