@@ -18,28 +18,33 @@ public class SysGoodServiceImpl implements SysGoodService {
 
     @Override
     public List<SysGood> findByGoodInf() {
-       // SysUser sysGood = sysGoodMapper.findByGoodName(name);
+
         return sysGoodMapper.findByGoodName();
     }
-
-
-
     @Override
-    public List<SysGood> getGoodList() {
-        System.out.println("牛逼牛逼");
-        List<SysGood> sysGoods = new ArrayList<>();
-        List<SysGood> Goods = findByGoodInf();
-        for (SysGood good : Goods) {
-            sysGoods.add(good);
-        }
-        return sysGoods;
+    public List<SysGood> selByGoodInf(String name) {
+
+        return sysGoodMapper.selByGoodName(name);
     }
+
+
 
     @Override
     public Object addGoodList(SysGood sysGood) {
         sysGoodMapper.insertGoodList(sysGood);
         return null;
     }
+    @Override
+    public Object delGoodList(String id) {
+        sysGoodMapper.delectGoodList(id);
+        return null;
+    }
+    @Override
+    public Object resGoodList(SysGood sysGood) {
+        sysGoodMapper.resioveGoodList(sysGood);
+        return null;
+    }
+
 
 
 

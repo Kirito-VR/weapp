@@ -22,9 +22,39 @@
         insert into sys_good(id,name,price,stock,descripe,imgPath)
         values(#{id},#{name},#{price},#{stock},#{descripe},#{imgPath})
        </insert>
+<!--    <update id="resioveGoodList" parameterType="com.example.weapp.bean.SysGood">-->
+<!--        update sys_good-->
+<!--        set-->
+<!--            name=#{name},-->
+<!--            price=#{price},-->
+<!--            stock=#{stock},-->
+<!--            descripe=#{descripe},-->
+<!--            imgPath=#{imgPath}-->
+<!--        where id = #{id}-->
+<!--    </update>-->
+    <select id="resioveGoodList" parameterType="com.example.weapp.bean.SysGood" resultMap="BaseResultMap">
+    update sys_good
+    set
+    name=#{name},
+    price=#{price},
+    stock=#{stock},
+    descripe=#{descripe},
+    imgPath=#{imgPath}
+    where id = #{id}
+    </select>
+    <delete id="delectGoodList" parameterType="com.example.weapp.bean.SysGood">
+        delete
+        from sys_good
+        where id=#{id}
+    </delete>
     <select id="findByGoodName" resultType="com.example.weapp.bean.SysGood">
         select*
         from sys_good
+    </select>
+    <select id="selByGoodName" resultType="com.example.weapp.bean.SysGood">
+        select *
+        from sys_good
+        where name like concat('%',#{name},'%')
     </select>
 
 

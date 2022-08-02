@@ -12,8 +12,12 @@ import java.util.List;
  */
 public interface SysGoodService {
 
-    List<SysGood> getGoodList() ;
-    List<SysGood> findByGoodInf( );
-    Object addGoodList(SysGood SysGood);
+    //List<SysGood> getGoodList() ;
+    List<SysGood> findByGoodInf();
+    Object addGoodList(SysGood sysGood);
+    Object delGoodList(String id);
+    Object resGoodList(SysGood sysGood);
+    List<SysGood> selByGoodInf(String name);
+
 
 }

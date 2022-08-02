@@ -23,19 +23,17 @@ public class SysGoodController {
     @GetMapping("/getGoodList")
     //public HttpResult getGoodList(@RequestParam String name){
     public HttpResult getGoodList(){
-        //List<Good> goodList = null;
-        // 在此处插入代码，实现获得good列表并赋值给goodList;
-        return HttpResult.ok(sysGoodService.getGoodList());
+        return HttpResult.ok(sysGoodService.findByGoodInf());
     }
     @GetMapping("/addGoodList")
-    public HttpResult addGoodList(SysGood SysGood) {
+    public HttpResult addGoodList(SysGood sysGood) {
         System.out.println("添加商品进来了");
-        String id = SysGood.getId();
-        String name = SysGood.getName();
-        double price=SysGood.getPrice();
-        int stock=SysGood.getStock();
-        String descripe=SysGood.getDescripe();
-        String imgPath=SysGood.getImgPath();
+        String id = sysGood.getId();
+        String name = sysGood.getName();
+        double price=sysGood.getPrice();
+        int stock=sysGood.getStock();
+        String descripe=sysGood.getDescripe();
+        String imgPath=sysGood.getImgPath();
         List addList=new ArrayList();
         addList.add(id);
         addList.add(name);
@@ -44,9 +42,32 @@ public class SysGoodController {
         addList.add(descripe);
         addList.add(imgPath);
         System.out.println("传过来的addList:"+addList);
-        System.out.println("img"+imgPath);
-//        System.out.println("上面：" + name);
-//        System.out.println("id：" + id);
+        sysGoodService.addGoodList(sysGood);
         return null;
+    }
+    @GetMapping("/delGoodList")
+    public HttpResult delGoodList(SysGood sysGood){
+        String id=sysGood.getId();
+        sysGoodService.delGoodList(id);
+        //return HttpResult.ok(sysGoodService.delGoodList());
+        return null;
+    }
+
+    @GetMapping("/resGoodList")
+    //public HttpResult getGoodList(@RequestParam String name){
+    public HttpResult resGoodList(SysGood sysGood){
+        String id=sysGood.getId();
+        sysGoodService.resGoodList(sysGood);
+        //return HttpResult.ok(sysGoodService.resGoodList());
+        return null;
+    }
+    @GetMapping("/selGoodList")
+    //public HttpResult getGoodList(@RequestParam String name){
+    public HttpResult selGoodList(SysGood sysGood){
+        String name=sysGood.getName();
+        //sysGoodService.resGoodList(sysGood);
+        System.out.println("查询名字"+name);
+        //return HttpResult.ok(sysGoodService.resGoodList());
+        return HttpResult.ok(sysGoodService.selByGoodInf(name));
     }
 }
