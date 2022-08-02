@@ -1,11 +1,13 @@
 spring:
-    datasource:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        username: root
-        password: ShuXue_7
-        url: jdbc:mysql://60.205.221.125:3306/juntai?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: zxc123
+#      ShuXue_7
+#        url: jdbc:mysql://60.205.221.125:3306/juntai?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/juntai?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
 server:
-    port: 8090
+  port: 8090
 mybatis:
-    mapper-locations: classpath:mapper/*Mapper.xml
-    type-aliases-package: com.example.weapp.bean
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.example.weapp.bean
