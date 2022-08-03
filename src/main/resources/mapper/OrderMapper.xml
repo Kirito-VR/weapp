@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.weapp.mapper.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.example.weapp.bean.Order">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="order_id" jdbcType="VARCHAR" property="order_id"/>
+        <result column="order_uid" jdbcType="VARCHAR" property="order_uid"/>
+        <result column="order_Trademoney" jdbcType="DOUBLE" property="order_Trademoney"/>
+        <result column="order_Tradeld" jdbcType="VARCHAR" property="order_Tradeld"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+    </resultMap>
+
+    <select id="getOrderList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from `order`;
+    </select>
+
+    <select id="findInputOrderIdList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from `order`
+        where order_id = #{order_id};
+    </select>
+
+    <select id="delOrderData" parameterType="java.lang.String" resultMap="BaseResultMap">
+        delete
+        from `order`
+        where order_id = #{order_id};
+    </select>
+
+    <select id="saveModifyOrder" parameterType="java.lang.String" resultMap="BaseResultMap">
+        update `order`
+        set order_uid=#{order_uid},
+            order_Trademoney=#{order_Trademoney},
+            order_Tradeld=#{order_Tradeld},
+            status=#{status}
+        where order_id = #{order_id}
+    </select>
+</mapper>
