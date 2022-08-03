@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.weapp.mapper.SysCartMapper">
+    <resultMap id="BaseResultMap" type="com.example.weapp.bean.Cart">
+    <id column="id" jdbcType="BIGINT" property="id"/>
+    <result column="count" jdbcType="INTEGER" property="Count"></result>
+    <result column="uid" jdbcType="VARCHAR" property="uid"></result>
+    <result column="gid" jdbcType="VARCHAR" property="gid"></result>
+    <result column="gName" jdbcType="VARCHAR" property="gName"></result>
+    <result column="price" jdbcType="DOUBLE" property="price"></result>
+    </resultMap>
+
+<!--    查询-->
+    <select id="getCartList" resultType="com.example.weapp.bean.Cart">
+        select *
+        from Cart
+    </select>
+    <!--新增购物车-->
+    <insert id="AddCart">
+        insert into cart
+            (id,uid,gid,count,price,gName) values
+                                                 (#{id},#{uid},#{gid},#{count},#{price},#{gName})
+    </insert>
+
+     <!-- 删除   -->
+    <delete id="DeleteCart" parameterType="com.example.weapp.bean.Cart">
+        delete  from cart
+        where gid=#{gid}
+    </delete>
+
+</mapper>
