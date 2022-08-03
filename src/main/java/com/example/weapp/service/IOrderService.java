@@ -13,4 +13,6 @@ public interface IOrderService {
     Boolean delOrderData(String order_id);
 
     Boolean saveModifyOrder(String order_id, String order_uid, String order_Trademoney, String order_Tradeld, String status);
+//    定义根据用户ID获取订单接口
+    List<Order> getOrderListByUserId(String id);
 }
