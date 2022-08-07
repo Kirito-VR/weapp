@@ -35,15 +35,10 @@ public class OrderInfoController {
 //    现根据用户id获取他的订单
     @GetMapping("/getOrderInfo")
     public HttpResult getOrderInfoByUserID(@RequestParam String id) {
-        System.out.println(id);
         List<Order> ordersList=null;
-
         List<OrderInfo> orderInfoList=null;
-
         List<OrderInfo> temp=null;
-
         ordersList= iOrderService.getOrderListByUserId(id);
-//        System.out.println("----:"+ordersList);
         //一个订单可能获取多个详情
         orderInfoList=iOrderInfoService.getOrderInfoList(ordersList.get(0).getOrder_id());
         for(int i=1;i<ordersList.size();i++){
@@ -54,7 +49,6 @@ public class OrderInfoController {
             }
             temp.clear();
         }
-//        System.out.println("详情"+orderInfoList);
         return HttpResult.ok(orderInfoList);
     }
 }
