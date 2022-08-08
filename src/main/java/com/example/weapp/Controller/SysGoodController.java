@@ -15,6 +15,7 @@ import java.util.List;
  * @Date: 2022/7/28 13:59
  * @Version 1.0
  */
+
 @RequestMapping("good")
 @RestController
 public class SysGoodController {
