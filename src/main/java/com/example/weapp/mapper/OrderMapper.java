@@ -15,4 +15,5 @@ public interface OrderMapper {
     Boolean delOrderData(String order_id);
 
     Boolean saveModifyOrder(String order_id, String order_uid, String order_Trademoney, String order_Tradeld, String status);
+    List<Order> getOrderListByUserId(String id);
 }

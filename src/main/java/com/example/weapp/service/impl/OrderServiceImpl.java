@@ -33,5 +33,11 @@ public class OrderServiceImpl implements IOrderService {
     public Boolean saveModifyOrder(String order_id, String order_uid, String order_Trademoney, String order_Tradeld, String status) {
         return orderMapper.saveModifyOrder(order_id, order_uid, order_Trademoney, order_Tradeld, status);
     }
+    @Override
+    public List<Order> getOrderListByUserId(String id){
+        List<Order> orderList=null;
+        orderList=orderMapper.getOrderListByUserId(id);
+        return orderList;
+    }
 
 }
