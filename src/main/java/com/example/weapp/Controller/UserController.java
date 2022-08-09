@@ -22,10 +22,8 @@ public class UserController {
     //获取所有的用户的信息，并且返回到httpResult里
     @GetMapping("/getUserList")
     public HttpResult getUserList(){
-        System.out.println("用户模块qqqqq");
         List<User> userList = null;
         userList= userService.findAllUsers();
-        System.out.println(userList);
         return HttpResult.ok(userList);
     }
     //通过查询获取用户，查询依据：等待修改
@@ -47,13 +45,5 @@ public class UserController {
         boolean changeResult=userService.changeUser(user);
         return HttpResult.ok(changeResult);
     }
-    @PostMapping("/deleteUser")
-    public HttpResult deleteUser(@RequestBody User user)
-    {
-        System.out.println(user);
-        boolean deleteResult=userService.deleteUser(user);
-        return HttpResult.ok(deleteResult);
-    }
-
 }
 
