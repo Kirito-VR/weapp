@@ -38,11 +38,11 @@
     <select id="findUserById" resultMap="BaseResultMap" parameterType="java.lang.String">
         select *
         from user
-        where id=#{id};
+        where weixin_openid=#{openid}
     </select>
 <!--搜索查询用户-->
     <select id="findUserBySearch" parameterType="java.lang.String" resultMap="BaseResultMap">
         select * from user
-            where user_nick like concat('%',#{userName},'%')
+            where nickname like concat('%',#{userName},'%')
     </select>
 </mapper>
