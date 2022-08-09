@@ -43,15 +43,15 @@ public class OrderGoodsController {
         List<OrderGoods> temp=null;
         ordersList= iOrderService.getOrderListByUserId(id);
         //一个订单可能获取多个详情
-        orderInfoList=IOrderGoodsService.getOrderGoodsList(ordersList.get(0).getOrder_id());
-        for(int i=1;i<ordersList.size();i++){
-            temp=IOrderGoodsService.getOrderGoodsList(ordersList.get(i).getOrder_id());
-
-            for(int j=0;j<temp.size();j++){
-                orderInfoList.add(temp.get(j));
-            }
-            temp.clear();
-        }
+//        orderInfoList=IOrderGoodsService.getOrderGoodsList(ordersList.get(0).getOrder_id());
+//        for(int i=1;i<ordersList.size();i++){
+//            temp=IOrderGoodsService.getOrderGoodsList(ordersList.get(i).getOrder_id());
+//
+//            for(int j=0;j<temp.size();j++){
+//                orderInfoList.add(temp.get(j));
+//            }
+//            temp.clear();
+//        }
         return HttpResult.ok(orderInfoList);
     }
 }
