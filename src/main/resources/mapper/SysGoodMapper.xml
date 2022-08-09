@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.weapp.mapper.SysGoodMapper">
+    <resultMap id="BaseResultMap" type="com.example.weapp.bean.SysMenu">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parentId"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="perms" jdbcType="VARCHAR" property="perms"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="order_num" jdbcType="INTEGER" property="orderNum"/>
+        <result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="last_update_by" jdbcType="VARCHAR" property="lastUpdateBy"/>
+        <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime"/>
+        <result column="del_flag" jdbcType="TINYINT" property="delFlag"/>
+    </resultMap>
+
+
+        <insert id="insertGoodList" parameterType="com.example.weapp.bean.SysGood">
+        insert into goods(id,goods_sn,goods_name,category_id,brand_id,gallery,keywords,brief,is_on_sale,sort_order,pic_url,share_url,is_new,is_hot,unit,counter_price,retail_price,detail,deleted)
+        values(#{id},#{good_sn},#{goods_name},#{category_id},#{brand_id},#{gallery},#{keywords},#{brief},#{is_on_sale},#{sort_order},#{pic_url},#{share_url},#{is_new},#{is_hot},#{unit},#{counter_price},#{retail_price},#{detail},#{deleted})
+       </insert>
+<!--    <update id="resioveGoodList" parameterType="com.example.weapp.bean.SysGood">-->
+<!--        update sys_good-->
+<!--        set-->
+<!--            name=#{name},-->
+<!--            price=#{price},-->
+<!--            stock=#{stock},-->
+<!--            descripe=#{descripe},-->
+<!--            imgPath=#{imgPath}-->
+<!--        where id = #{id}-->
+<!--    </update>-->
+    <select id="resioveGoodList" parameterType="com.example.weapp.bean.SysGood" resultMap="BaseResultMap">
+    update goods
+    set
+    goods_name=#{goods_name},
+    category_id=#{category_id},
+    brand_id=#{brand_id},
+    gallery=#{gallery},
+    keywords=#{keywords},
+    brief=#{brief},
+    is_on_sale=#{is_on_sale},
+    sort_order=#{sort_order},
+    pic_url=#{pic_url},
+    share_url=#{share_url},
+    is_new=#{is_new},
+    is_hot=#{is_hot},
+    unit=#{unit},
+    counter_price=#{counter_price},
+    retail_price=#{retail_price},
+    detail=#{detail},
+    deleted=#{deleted}
+    where id = #{id}
+    </select>
+    <delete id="delectGoodList" parameterType="com.example.weapp.bean.SysGood">
+        delete
+        from goods
+        where id=#{id}
+    </delete>
+    <select id="findByGoodName" resultType="com.example.weapp.bean.SysGood">
+        select*
+        from goods
+    </select>
+    <select id="selByGoodName" resultType="com.example.weapp.bean.SysGood">
+        select *
+        from goods
+        where goods_name like concat('%',#{name},'%')
+    </select>
+
+
+</mapper>

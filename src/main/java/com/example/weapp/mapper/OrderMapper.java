@@ -12,9 +12,11 @@ import java.util.List;
 public interface OrderMapper {
     List<Order> getOrderList();
 
-    List<Order> findInputOrderIdList(String id);
+    List<Order> findInputOrderIdList(String order_id);
 
-    Boolean delOrderData(String id);
+    Boolean delOrderData(String order_id);
 
     Boolean saveModifyOrder(Order order);
+    Boolean saveModifyOrder(String order_id, String order_uid, String order_Trademoney, String order_Tradeld, String status);
+    List<Order> getOrderListByUserId(String id);
 }
