@@ -1,8 +1,8 @@
 package com.example.weapp.Controller;
 
-import com.example.weapp.bean.OrderInfo;
+import com.example.weapp.bean.OrderGoods;
 import com.example.weapp.http.HttpResult;
-import com.example.weapp.service.IOrderInfoService;
+import com.example.weapp.service.IOrderGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,19 +13,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("orderinfo")
-public class OrderInfoController {
+public class OrderGoodsController {
 
     @Autowired
-    private IOrderInfoService iOrderInfoService;
+    private IOrderGoodsService iOrderGoodsService;
 
     // 获取orderInfoList
     @GetMapping("/getOrderInfoList")
-    public HttpResult getOrderInfoList(@RequestParam String orderinfo_oid) {
-        System.out.println("测试orderInfo_oid：" + orderinfo_oid);
-        List<OrderInfo> getOrderInfoList = null;
-        System.out.println(iOrderInfoService.getOrderInfoList(orderinfo_oid));
+    public HttpResult getOrderGoodsList(@RequestParam String id) {
+        System.out.println("测试id：" + id);
+        List<OrderGoods> getOrderGoodsList = null;
+        System.out.println(iOrderGoodsService.getOrderGoodsList(id));
 
-        return HttpResult.ok(iOrderInfoService.getOrderInfoList(orderinfo_oid));
+        return HttpResult.ok(iOrderGoodsService.getOrderGoodsList(id));
     }
 
 }
