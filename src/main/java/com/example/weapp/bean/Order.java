@@ -241,7 +241,7 @@ public class Order {
         return Objects.hash(id, user_id, order_sn, order_status, consignee, mobile, address, message, goods_price, freight_price, coupon_price, integral_price, groupon_price, order_price, actual_price, pay_id, pay_time, ship_sn, ship_channel, ship_time, confirm_time, comments, end_time, deleted);
     }
 
-    
+
     @Override
     public String toString() {
         return "Order{" +
