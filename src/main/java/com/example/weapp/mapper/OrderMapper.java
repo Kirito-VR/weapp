@@ -14,7 +14,7 @@ public interface OrderMapper {
 
     List<Order> findInputOrderIdList(String id);
 
-    Boolean delOrderData(String order_id);
+    Boolean delOrderData(String id);
 
     Boolean saveModifyOrder(Order order);
 }

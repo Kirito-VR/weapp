@@ -27,8 +27,8 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
-    public Boolean delOrderData(String order_id) {
-        return orderMapper.delOrderData(order_id);
+    public Boolean delOrderData(String id) {
+        return orderMapper.delOrderData(id);
     }
 
     @Override

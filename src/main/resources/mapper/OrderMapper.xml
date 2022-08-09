@@ -10,13 +10,13 @@
         <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
         <result column="address" jdbcType="VARCHAR" property="address"/>
         <result column="message" jdbcType="VARCHAR" property="message"/>
-        <result column="goods_price" jdbcType="DECIMAL" property="goods_price"/>
-        <result column="freight_price" jdbcType="DECIMAL" property="freight_price"/>
-        <result column="coupon_price" jdbcType="DECIMAL" property="coupon_price"/>
-        <result column="integral_price" jdbcType="DECIMAL" property="integral_price"/>
-        <result column="groupon_price" javaType="DECIMAL" property="groupon_price"/>
-        <result column="order_price" jdbcType="DECIMAL" property="order_price"/>
-        <result column="actual_price" jdbcType="DECIMAL" property="actual_price"/>
+        <result column="goods_price" jdbcType="DOUBLE" property="goods_price"/>
+        <result column="freight_price" jdbcType="DOUBLE" property="freight_price"/>
+        <result column="coupon_price" jdbcType="DOUBLE" property="coupon_price"/>
+        <result column="integral_price" jdbcType="DOUBLE" property="integral_price"/>
+        <result column="groupon_price" javaType="DOUBLE" property="groupon_price"/>
+        <result column="order_price" jdbcType="DOUBLE" property="order_price"/>
+        <result column="actual_price" jdbcType="DOUBLE" property="actual_price"/>
         <result column="pay_id" jdbcType="VARCHAR" property="pay_id"/>
         <result column="pay_time" jdbcType="DATE" property="pay_time"/>
         <result column="ship_sn" jdbcType="VARCHAR" property="ship_sn"/>
@@ -42,33 +42,35 @@
     <select id="delOrderData" parameterType="java.lang.String" resultMap="BaseResultMap">
         delete
         from `order`
-        where order_id = #{order_id};
+        where id = #{id};
     </select>
 
-    <select id="saveModifyOrder" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="saveModifyOrder" parameterType="java.lang.Object" resultMap="BaseResultMap">
         update `order`
         set user_id=#{user_id},
             order_sn=#{order_sn},
             order_status=#{order_status},
-            consignee=#{consignee} mobile=#{mobile},
+            consignee=#{consignee},
+            mobile=#{mobile},
             address=#{address},
             message=#{message},
-            goods_price=#{goods_price}
+            goods_price=#{goods_price},
             freight_price=#{freight_price},
             coupon_price=#{coupon_price},
             integral_price=#{integral_price},
-            groupon_price=#{groupon_price}
+            groupon_price=#{groupon_price},
             order_price=#{order_price},
             actual_price=#{actual_price},
             pay_id=#{pay_id},
-            pay_time=#{pay_time}
-            ship_cn=#{ship_cn},
+            pay_time=#{pay_time},
+            ship_sn=#{ship_sn},
             ship_channel=#{ship_channel},
             ship_time=#{ship_time},
-            confirm_time=#{confirm_time}
+            confirm_time=#{confirm_time},
             comments=#{comments},
             end_time=#{end_time},
             deleted=#{deleted}
-        where id = #{id}
+
+        where id = #{id};
     </select>
 </mapper>
