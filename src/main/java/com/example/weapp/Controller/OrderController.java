@@ -1,14 +1,12 @@
 package com.example.weapp.Controller;
 
 import com.example.weapp.bean.Order;
-import com.example.weapp.bean.OrderInfo;
 import com.example.weapp.http.HttpResult;
 import com.example.weapp.service.IOrderService;
-import com.example.weapp.service.impl.OrderServiceImpl;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,24 +30,25 @@ public class OrderController {
     }
 
     @GetMapping("/findInputOrderIdList")
-    public HttpResult findInputOrderIdList(@RequestParam String order_id) {
-        System.out.println("测试order_id：" + order_id);
+    public HttpResult findInputOrderIdList(@RequestParam String id) {
+        System.out.println("测试id：" + id);
         List<Order> findOrderList = null;
-        return HttpResult.ok(iOrderService.findInputOrderIdList(order_id));
+        return HttpResult.ok(iOrderService.findInputOrderIdList(id));
     }
 
     @GetMapping("/delOrderData")
-    public HttpResult delOrderData(@RequestParam String order_id) {
-        System.out.println("拿到删除order_id：" + order_id);
+    public HttpResult delOrderData(@RequestParam String id) {
+        System.out.println("拿到删除id：" + id);
         Boolean delOrderData = null;
-        return HttpResult.ok(iOrderService.delOrderData(order_id));
+        return HttpResult.ok(iOrderService.delOrderData(id));
     }
 
-    @GetMapping("saveModifyOrder")
-    public HttpResult saveModifyOrder(@RequestParam String order_id, String order_uid, String order_Trademoney, String order_Tradeld, String status) {
-        System.out.println("拿到修改的数据" + order_id + order_uid + order_Trademoney + order_Tradeld + status);
-        Boolean saveModifyOrder = null;
-        return HttpResult.ok(iOrderService.saveModifyOrder(order_id, order_uid, order_Trademoney, order_Tradeld, status));
+    @PostMapping("saveModifyOrder")
+    public HttpResult saveModifyOrder(@RequestBody Order order) {
+        System.out.println("拿到的数据：" + order);
+        Boolean saveModifyOrder = iOrderService.saveModifyOrder(order);
+        return HttpResult.ok(saveModifyOrder);
     }
-
 }
+
+
