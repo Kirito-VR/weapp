@@ -3,80 +3,169 @@ package com.example.weapp.bean;
 import java.util.Objects;
 
 /**
- * @Author: Cqmax
+ * @Author: xm
  * @Date: 2022/7/28 14:33
  * @Version 1.0
  */
 
-//注解：用户类，重写tostring ，equals ，hascode
+//注解：用户类，重写tostring ，equals ，hashcode
 public class User {
-    private String userID;
-    private String userNick;
-    private String userPassword;
-    private String userPhoneNumber;
-    private String userAddress;
+    private String id;
+    private String password;
+    private String gender;
+    private String birthday;
+    private String lastLoginTime;
+    private String lastLoginIp;
+    private String userLevel;
+    private String nickname;
+    private String mobile;
+    private String avatar;
+    private String wechatOpenid;
+    private String sessionKey;
+    private String status;
+    private String deleted;
 
     @Override
     public String toString() {
         return "User{" +
-                "userID='" + userID + '\'' +
-                ", userNick='" + userNick + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                ", userPhoneNumber='" + userPhoneNumber + '\'' +
-                ", userAddress='" + userAddress + '\'' +
+                "id='" + id + '\'' +
+                ", password='" + password + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", lastLoginTime='" + lastLoginTime + '\'' +
+                ", lastLoginIp='" + lastLoginIp + '\'' +
+                ", userLevel='" + userLevel + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", wechatOpenid='" + wechatOpenid + '\'' +
+                ", sessionKey='" + sessionKey + '\'' +
+                ", status='" + status + '\'' +
+                ", deleted='" + deleted + '\'' +
                 '}';
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(userID, user.userID) && Objects.equals(userNick, user.userNick) && Objects.equals(userPassword, user.userPassword) && Objects.equals(userPhoneNumber, user.userPhoneNumber) && Objects.equals(userAddress, user.userAddress);
+        return Objects.equals(id, user.id) && Objects.equals(password, user.password) && Objects.equals(gender, user.gender) && Objects.equals(birthday, user.birthday) && Objects.equals(lastLoginTime, user.lastLoginTime) && Objects.equals(lastLoginIp, user.lastLoginIp) && Objects.equals(userLevel, user.userLevel) && Objects.equals(nickname, user.nickname) && Objects.equals(mobile, user.mobile) && Objects.equals(avatar, user.avatar) && Objects.equals(wechatOpenid, user.wechatOpenid) && Objects.equals(sessionKey, user.sessionKey) && Objects.equals(status, user.status) && Objects.equals(deleted, user.deleted);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userID, userNick, userPassword, userPhoneNumber, userAddress);
+        return Objects.hash(id, password, gender, birthday, lastLoginTime, lastLoginIp, userLevel, nickname, mobile, avatar, wechatOpenid, sessionKey, status, deleted);
     }
 
-    public String getUserID() {
-        return userID;
+    public String getId() {
+        return id;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getUserNick() {
-        return userNick;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserNick(String userNick) {
-        this.userNick = userNick;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getGender() {
+        return gender;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getUserPhoneNumber() {
-        return userPhoneNumber;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setUserPhoneNumber(String userPhoneNumber) {
-        this.userPhoneNumber = userPhoneNumber;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
-    public String getUserAddress() {
-        return userAddress;
+    public String getLastLoginTime() {
+        return lastLoginTime;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setLastLoginTime(String lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public String getLastLoginIp() {
+        return lastLoginIp;
+    }
+
+    public void setLastLoginIp(String lastLoginIp) {
+        this.lastLoginIp = lastLoginIp;
+    }
+
+    public String getUserLevel() {
+        return userLevel;
+    }
+
+    public void setUserLevel(String userLevel) {
+        this.userLevel = userLevel;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getWechatOpenid() {
+        return wechatOpenid;
+    }
+
+    public void setWechatOpenid(String wechatOpenid) {
+        this.wechatOpenid = wechatOpenid;
+    }
+
+    public String getSessionKey() {
+        return sessionKey;
+    }
+
+    public void setSessionKey(String sessionKey) {
+        this.sessionKey = sessionKey;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
     }
 }

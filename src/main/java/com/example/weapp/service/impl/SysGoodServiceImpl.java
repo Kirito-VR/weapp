@@ -18,7 +18,6 @@ public class SysGoodServiceImpl implements SysGoodService {
 
     @Override
     public List<SysGood> findByGoodInf() {
-
         return sysGoodMapper.findByGoodName();
     }
     @Override
