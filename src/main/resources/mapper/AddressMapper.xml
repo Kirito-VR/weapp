@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.weapp.mapper.AddressMapper">
+    <resultMap id="BaseResultMap" type="com.example.weapp.bean.Address">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="address_name" jdbcType="VARCHAR" property="addressName"></result>
+        <result column="user_id" jdbcType="INTEGER" property="userId"></result>
+        <result column="province" jdbcType="VARCHAR" property="province"></result>
+        <result column="city" jdbcType="VARCHAR" property="city"></result>
+        <result column="county" jdbcType="VARCHAR" property="county"></result>
+        <result column="address_detail" jdbcType="VARCHAR" property="addressDetail"></result>
+        <result column="area_code" jdbcType="CHAR" property="areaCode"></result>
+        <result column="postal_code" jdbcType="CHAR" property="postalCode"></result>
+        <result column="tel" jdbcType="VARCHAR" property="tel"></result>
+        <result column="is_default" jdbcType="TINYINT" property="isDefault"></result>
+        <result column="deleted" jdbcType="TINYINT" property="deleted"></result>
+    </resultMap>
+<!--    /通过用户id获取-->
+    <select id="getAddressById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select *
+        from address
+        where user_id=#{id};
+    </select>
+    <!--    修改用户信息-->
+</mapper>
