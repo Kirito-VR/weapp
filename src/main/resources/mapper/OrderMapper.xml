@@ -2,11 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.weapp.mapper.OrderMapper">
     <resultMap id="BaseResultMap" type="com.example.weapp.bean.Order">
-        <result column="order_id" jdbcType="VARCHAR" property="order_id"/>
-        <result column="order_uid" jdbcType="VARCHAR" property="order_uid"/>
-        <result column="order_Trademoney" jdbcType="DOUBLE" property="order_Trademoney"/>
-        <result column="order_Tradeld" jdbcType="VARCHAR" property="order_Tradeld"/>
-        <result column="status" jdbcType="INTEGER" property="status"/>
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="INTEGER" property="user_id"/>
+        <result column="order_sn" jdbcType="VARCHAR" property="order_sn"/>
+        <result column="order_status" jdbcType="INTEGER" property="order_status"/>
+        <result column="consignee" jdbcType="VARCHAR" property="consignee"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="message" jdbcType="VARCHAR" property="message"/>
+        <result column="goods_price" jdbcType="DOUBLE" property="goods_price"/>
+        <result column="freight_price" jdbcType="DOUBLE" property="freight_price"/>
+        <result column="coupon_price" jdbcType="DOUBLE" property="coupon_price"/>
+        <result column="integral_price" jdbcType="DOUBLE" property="integral_price"/>
+        <result column="groupon_price" javaType="DOUBLE" property="groupon_price"/>
+        <result column="order_price" jdbcType="DOUBLE" property="order_price"/>
+        <result column="actual_price" jdbcType="DOUBLE" property="actual_price"/>
+        <result column="pay_id" jdbcType="VARCHAR" property="pay_id"/>
+        <result column="pay_time" jdbcType="DATE" property="pay_time"/>
+        <result column="ship_sn" jdbcType="VARCHAR" property="ship_sn"/>
+        <result column="ship_channel" jdbcType="VARCHAR" property="ship_channel"/>
+        <result column="ship_time" jdbcType="DATE" property="ship_time"/>
+        <result column="confirm_time" jdbcType="DATE" property="confirm_time"/>
+        <result column="comments" jdbcType="INTEGER" property="comments"/>
+        <result column="end_time" jdbcType="DATE" property="end_time"/>
+        <result column="deleted" jdbcType="INTEGER" property="deleted"/>
     </resultMap>
 
     <select id="getOrderList" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -17,26 +36,41 @@
     <select id="findInputOrderIdList" parameterType="java.lang.String" resultMap="BaseResultMap">
         select *
         from `order`
-        where order_id = #{order_id};
+        where id = #{id};
     </select>
 
     <select id="delOrderData" parameterType="java.lang.String" resultMap="BaseResultMap">
         delete
         from `order`
-        where order_id = #{order_id};
+        where id = #{id};
     </select>
 
-    <select id="saveModifyOrder" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="saveModifyOrder" parameterType="java.lang.Object" resultMap="BaseResultMap">
         update `order`
-        set order_uid=#{order_uid},
-            order_Trademoney=#{order_Trademoney},
-            order_Tradeld=#{order_Tradeld},
-            status=#{status}
-        where order_id = #{order_id}
-    </select>
-    <select id="getOrderListByUserId" resultType="com.example.weapp.bean.Order" parameterType="java.lang.String">
-        select *
-        from `order`
-        where order_uid=#{id};
+        set user_id=#{user_id},
+            order_sn=#{order_sn},
+            order_status=#{order_status},
+            consignee=#{consignee},
+            mobile=#{mobile},
+            address=#{address},
+            message=#{message},
+            goods_price=#{goods_price},
+            freight_price=#{freight_price},
+            coupon_price=#{coupon_price},
+            integral_price=#{integral_price},
+            groupon_price=#{groupon_price},
+            order_price=#{order_price},
+            actual_price=#{actual_price},
+            pay_id=#{pay_id},
+            pay_time=#{pay_time},
+            ship_sn=#{ship_sn},
+            ship_channel=#{ship_channel},
+            ship_time=#{ship_time},
+            confirm_time=#{confirm_time},
+            comments=#{comments},
+            end_time=#{end_time},
+            deleted=#{deleted}
+
+        where id = #{id};
     </select>
 </mapper>
