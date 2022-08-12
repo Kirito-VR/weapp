@@ -3,7 +3,7 @@ package com.example.weapp.bean;
 import java.util.Objects;
 
 /**
- * @Author: Cqmax
+ * @Author: xm
  * @Date: 2022/7/28 14:33
  * @Version 1.0
  */
