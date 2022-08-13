@@ -6,10 +6,7 @@ import com.example.weapp.service.AddressService;
 import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +27,13 @@ public class AddressController {
         addressList=addressService.getAddressById(id);
         System.out.println(addressList);
         return HttpResult.ok(addressList);
+    }
+    @PostMapping("/action/add")
+    public HttpResult newAddress(@RequestBody Address address){
+//        System.out.println("----:"+address);
+        boolean addResult=false;
+        addResult=addressService.addAddress(address);
+        System.out.println(addResult);
+        return HttpResult.ok(addResult);
     }
 }
