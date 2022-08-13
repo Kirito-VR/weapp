@@ -60,8 +60,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
+
                 // 其他所有请求需要身份认证
-                .anyRequest().authenticated();
+//                .anyRequest().authenticated()
+        ;
         http.headers().frameOptions().disable();
         // 退出登录处理器
         http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
