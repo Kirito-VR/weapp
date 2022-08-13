@@ -13,4 +13,5 @@ public interface AddressService {
     //定义根据用户获取收获地址函数
     public List<Address> getAddressById(String id);
     public Boolean addAddress(Address address);
+    public Boolean updateAddress(Address address);
 }

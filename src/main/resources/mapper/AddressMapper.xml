@@ -20,6 +20,13 @@
         insert into address(id,address_name,user_id,province,city,county,address_detail,area_code,tel,is_default,deleted)
         values(#{id},#{addressName},#{userId},#{province},#{city},#{county},#{addressDetail},#{areaCode},#{tel},#{isDefault},#{deleted});
     </insert>
+<!--    更新函数-->
+    <update id="updateAddress" parameterType="com.example.weapp.bean.Address">
+        UPDATE address
+        SET address_name=#{addressName},province=#{province},city=#{city},county=#{county},address_detail=#{addressDetail},
+            area_code=#{areaCode},postalCode=#{postalCode},tel=#{tel},is_default=#{isDefault},deleted=#{deleted}
+            WHERE id=#{id};
+    </update>
     <!--    /通过用户id获取-->
     <select id="getAddressById" resultMap="BaseResultMap" parameterType="java.lang.String">
         select *

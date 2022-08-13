@@ -36,4 +36,20 @@ public class AddressController {
         System.out.println(addResult);
         return HttpResult.ok(addResult);
     }
+    @PostMapping("/action/update")
+    public HttpResult addressUpdate(@RequestBody Address address){
+        boolean updateResult=false;
+        updateResult=addressService.updateAddress(address);
+        return HttpResult.ok(updateResult);
+    }
+    @PostMapping("/action/delete")
+    public HttpResult addressDelete(@RequestBody Address address){
+        boolean deleteResult=false;
+        //逻辑删除
+        address.setDeleted("1");
+        deleteResult=addressService.updateAddress(address);
+        return HttpResult.ok(deleteResult);
+    }
+
+
 }

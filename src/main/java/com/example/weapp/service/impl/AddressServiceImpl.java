@@ -35,4 +35,10 @@ public class AddressServiceImpl implements AddressService {
         addResult=addressMapper.addAddress(address);
         return addResult;
     }
+    @Override
+    public Boolean updateAddress(Address address) {
+        Boolean updateResult=false;
+        updateResult= addressMapper.updateAddress(address);
+        return updateResult;
+    }
 }
