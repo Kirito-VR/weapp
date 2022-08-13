@@ -17,4 +17,7 @@ public interface UserService {
     List<User> findUserBySearch(String userName);
     boolean changeUser(User user);
     boolean deleteUser(User user);
+    //小程序接口
+    List<User> findUserByOpenid(String userName);
+    boolean registerUser(User user);
 }
