@@ -23,4 +23,22 @@ public class AddressServiceImpl implements AddressService {
         addressList=addressMapper.getAddressById(id);
         return addressList;
     }
+    //新增地址函数，首先调用找到所有的地址，然后创建一个id，确保唯一性，
+    @Override
+    public Boolean addAddress(Address address) {
+        Boolean addResult=false;
+        //调用mapper的获取所有地址方法
+        List<Address> allAddress=null;
+        allAddress=addressMapper.getAllAddress();
+        address.setId((allAddress.size()+1)+"");
+        address.setDeleted("0");
+        addResult=addressMapper.addAddress(address);
+        return addResult;
+    }
+    @Override
+    public Boolean updateAddress(Address address) {
+        Boolean updateResult=false;
+        updateResult= addressMapper.updateAddress(address);
+        return updateResult;
+    }
 }
