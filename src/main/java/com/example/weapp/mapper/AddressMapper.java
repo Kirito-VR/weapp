@@ -12,4 +12,7 @@ import java.util.List;
 @Mapper
 public interface AddressMapper {
     List<Address> getAddressById(String id);
+    List<Address> getAllAddress();
+    Boolean addAddress(Address address);
+    Boolean updateAddress(Address address);
 }
