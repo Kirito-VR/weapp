@@ -5,8 +5,11 @@ import com.example.weapp.mapper.UserMapper;
 import com.example.weapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by xm on 2022/7/29 10:27
@@ -41,5 +44,21 @@ public class UserServiceImpl implements UserService {
     public boolean deleteUser(User user) {
         boolean deleteResult=userMapper.deleteUser(user);
         return deleteResult;
+    }
+
+
+    //微信小程序接口
+    @Override
+    public List<User> findUserByOpenid(String openid){
+        List<User> userList=null;
+        userList=userMapper.findUserByOpenid(openid);
+        return userList;
+    }
+
+    @Override
+
+    public boolean registerUser(User user){
+        boolean registerUserrs=userMapper.registerUser(user);
+        return registerUserrs;
     }
 }

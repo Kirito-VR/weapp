@@ -45,4 +45,19 @@
         select * from user
             where nickname like concat('%',#{userName},'%')
     </select>
+
+<!--    微信小程序接口-->
+<!--    通过openid查找用户-->
+    <select id="findUserByOpenid" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from user
+        where weixin_openid=#{openid}
+    </select>
+
+    <!--    数据库里注册用户-->
+    <insert id="registerUser" parameterType="java.lang.String">
+        insert into user
+        (id,password,gender,birthday,last_login_time,last_login_ip,user_level,nickname,mobile,avatar,weixin_openid,session_key,status,deleted)
+        values (#{id},#{password},#{gender},#{birthday},#{lastLoginTime},#{lastLoginIp},#{userLevel},#{nickname},#{mobile},#{avatar},#{wechatOpenid},#{sessionKey},#{status},#{deleted})
+    </insert>
 </mapper>

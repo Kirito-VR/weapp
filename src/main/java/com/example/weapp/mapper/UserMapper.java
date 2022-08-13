@@ -18,4 +18,6 @@ public interface UserMapper {
     List<User> findUserBySearch(String userName);
     boolean changeUser(User user);
     boolean deleteUser(User user);
+    List<User> findUserByOpenid(String openid);
+    boolean registerUser(User user);
 }
